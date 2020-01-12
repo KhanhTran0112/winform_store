@@ -16,3 +16,8 @@ E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\obj\Debug\CuaHangTi
 E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.csproj.GenerateResource.cache
 E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.exe
 E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.pdb
+E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\bin\Debug\EntityFramework.dll
+E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\bin\Debug\EntityFramework.SqlServer.dll
+E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\bin\Debug\EntityFramework.xml
+E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\bin\Debug\EntityFramework.SqlServer.xml
+E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.csproj.CopyComplete
