@@ -101,14 +101,16 @@
             this.splitContainer10 = new System.Windows.Forms.SplitContainer();
             this.label16 = new System.Windows.Forms.Label();
             this.splitContainer11 = new System.Windows.Forms.SplitContainer();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox35 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.picHangHoa = new System.Windows.Forms.PictureBox();
+            this.btnBrowser = new System.Windows.Forms.Button();
+            this.cobMaChatLieu = new System.Windows.Forms.ComboBox();
+            this.txtSoLuongHang = new System.Windows.Forms.TextBox();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.txtGiaBan = new System.Windows.Forms.TextBox();
+            this.txtTenHang = new System.Windows.Forms.TextBox();
+            this.txtTimHiemHangHoa = new System.Windows.Forms.TextBox();
+            this.txtGiaNhap = new System.Windows.Forms.TextBox();
+            this.txtMaHang = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -122,10 +124,10 @@
             this.dgvHangHoa = new System.Windows.Forms.DataGridView();
             this.button24 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
+            this.btnLuuHH = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
+            this.btnThemHH = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer13 = new System.Windows.Forms.SplitContainer();
             this.label26 = new System.Windows.Forms.Label();
@@ -170,8 +172,6 @@
             this.button26 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
-            this.btnBrowser = new System.Windows.Forms.Button();
-            this.picHangHoa = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -226,6 +226,7 @@
             this.splitContainer11.Panel1.SuspendLayout();
             this.splitContainer11.Panel2.SuspendLayout();
             this.splitContainer11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).BeginInit();
             this.splitContainer12.Panel1.SuspendLayout();
             this.splitContainer12.Panel2.SuspendLayout();
@@ -247,7 +248,6 @@
             this.splitContainer15.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -573,6 +573,7 @@
             this.btnThemNV.Text = "Thêm";
             this.btnThemNV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThemNV.UseVisualStyleBackColor = false;
+            this.btnThemNV.Click += new System.EventHandler(this.btnThemNV_Click);
             // 
             // tabPage6
             // 
@@ -908,7 +909,6 @@
             // 
             // textBox34
             // 
-            this.textBox34.Enabled = false;
             this.textBox34.Location = new System.Drawing.Point(620, 13);
             this.textBox34.Name = "textBox34";
             this.textBox34.Size = new System.Drawing.Size(249, 20);
@@ -916,7 +916,6 @@
             // 
             // textBox9
             // 
-            this.textBox9.Enabled = false;
             this.textBox9.Location = new System.Drawing.Point(168, 13);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(249, 20);
@@ -1095,14 +1094,14 @@
             // 
             this.splitContainer11.Panel1.Controls.Add(this.picHangHoa);
             this.splitContainer11.Panel1.Controls.Add(this.btnBrowser);
-            this.splitContainer11.Panel1.Controls.Add(this.comboBox2);
-            this.splitContainer11.Panel1.Controls.Add(this.textBox14);
-            this.splitContainer11.Panel1.Controls.Add(this.textBox17);
-            this.splitContainer11.Panel1.Controls.Add(this.textBox16);
-            this.splitContainer11.Panel1.Controls.Add(this.textBox12);
-            this.splitContainer11.Panel1.Controls.Add(this.textBox35);
-            this.splitContainer11.Panel1.Controls.Add(this.textBox15);
-            this.splitContainer11.Panel1.Controls.Add(this.textBox11);
+            this.splitContainer11.Panel1.Controls.Add(this.cobMaChatLieu);
+            this.splitContainer11.Panel1.Controls.Add(this.txtSoLuongHang);
+            this.splitContainer11.Panel1.Controls.Add(this.txtGhiChu);
+            this.splitContainer11.Panel1.Controls.Add(this.txtGiaBan);
+            this.splitContainer11.Panel1.Controls.Add(this.txtTenHang);
+            this.splitContainer11.Panel1.Controls.Add(this.txtTimHiemHangHoa);
+            this.splitContainer11.Panel1.Controls.Add(this.txtGiaNhap);
+            this.splitContainer11.Panel1.Controls.Add(this.txtMaHang);
             this.splitContainer11.Panel1.Controls.Add(this.label20);
             this.splitContainer11.Panel1.Controls.Add(this.label23);
             this.splitContainer11.Panel1.Controls.Add(this.label19);
@@ -1120,67 +1119,91 @@
             this.splitContainer11.SplitterDistance = 170;
             this.splitContainer11.TabIndex = 0;
             // 
-            // comboBox2
+            // picHangHoa
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(102, 92);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(193, 21);
-            this.comboBox2.TabIndex = 2;
+            this.picHangHoa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picHangHoa.Location = new System.Drawing.Point(797, 55);
+            this.picHangHoa.Name = "picHangHoa";
+            this.picHangHoa.Size = new System.Drawing.Size(210, 97);
+            this.picHangHoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHangHoa.TabIndex = 5;
+            this.picHangHoa.TabStop = false;
             // 
-            // textBox14
+            // btnBrowser
             // 
-            this.textBox14.Location = new System.Drawing.Point(102, 132);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(193, 20);
-            this.textBox14.TabIndex = 1;
+            this.btnBrowser.Enabled = false;
+            this.btnBrowser.Location = new System.Drawing.Point(1013, 55);
+            this.btnBrowser.Name = "btnBrowser";
+            this.btnBrowser.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowser.TabIndex = 4;
+            this.btnBrowser.Text = "Browser";
+            this.btnBrowser.UseVisualStyleBackColor = true;
+            this.btnBrowser.Click += new System.EventHandler(this.btnBrowser_Click);
             // 
-            // textBox17
+            // cobMaChatLieu
             // 
-            this.textBox17.Location = new System.Drawing.Point(419, 92);
-            this.textBox17.Multiline = true;
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(193, 60);
-            this.textBox17.TabIndex = 1;
+            this.cobMaChatLieu.Enabled = false;
+            this.cobMaChatLieu.FormattingEnabled = true;
+            this.cobMaChatLieu.Location = new System.Drawing.Point(102, 92);
+            this.cobMaChatLieu.Name = "cobMaChatLieu";
+            this.cobMaChatLieu.Size = new System.Drawing.Size(193, 21);
+            this.cobMaChatLieu.TabIndex = 2;
             // 
-            // textBox16
+            // txtSoLuongHang
             // 
-            this.textBox16.Enabled = false;
-            this.textBox16.Location = new System.Drawing.Point(419, 52);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(193, 20);
-            this.textBox16.TabIndex = 1;
+            this.txtSoLuongHang.Enabled = false;
+            this.txtSoLuongHang.Location = new System.Drawing.Point(102, 132);
+            this.txtSoLuongHang.Name = "txtSoLuongHang";
+            this.txtSoLuongHang.Size = new System.Drawing.Size(193, 20);
+            this.txtSoLuongHang.TabIndex = 1;
             // 
-            // textBox12
+            // txtGhiChu
             // 
-            this.textBox12.Location = new System.Drawing.Point(102, 52);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(193, 20);
-            this.textBox12.TabIndex = 1;
+            this.txtGhiChu.Enabled = false;
+            this.txtGhiChu.Location = new System.Drawing.Point(419, 92);
+            this.txtGhiChu.Multiline = true;
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(193, 60);
+            this.txtGhiChu.TabIndex = 1;
             // 
-            // textBox35
+            // txtGiaBan
             // 
-            this.textBox35.Enabled = false;
-            this.textBox35.Location = new System.Drawing.Point(797, 16);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(210, 20);
-            this.textBox35.TabIndex = 1;
+            this.txtGiaBan.Enabled = false;
+            this.txtGiaBan.Location = new System.Drawing.Point(419, 52);
+            this.txtGiaBan.Name = "txtGiaBan";
+            this.txtGiaBan.Size = new System.Drawing.Size(193, 20);
+            this.txtGiaBan.TabIndex = 1;
             // 
-            // textBox15
+            // txtTenHang
             // 
-            this.textBox15.Enabled = false;
-            this.textBox15.Location = new System.Drawing.Point(419, 16);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(193, 20);
-            this.textBox15.TabIndex = 1;
+            this.txtTenHang.Enabled = false;
+            this.txtTenHang.Location = new System.Drawing.Point(102, 52);
+            this.txtTenHang.Name = "txtTenHang";
+            this.txtTenHang.Size = new System.Drawing.Size(193, 20);
+            this.txtTenHang.TabIndex = 1;
             // 
-            // textBox11
+            // txtTimHiemHangHoa
             // 
-            this.textBox11.Enabled = false;
-            this.textBox11.Location = new System.Drawing.Point(102, 16);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(193, 20);
-            this.textBox11.TabIndex = 1;
+            this.txtTimHiemHangHoa.Location = new System.Drawing.Point(797, 16);
+            this.txtTimHiemHangHoa.Name = "txtTimHiemHangHoa";
+            this.txtTimHiemHangHoa.Size = new System.Drawing.Size(210, 20);
+            this.txtTimHiemHangHoa.TabIndex = 1;
+            // 
+            // txtGiaNhap
+            // 
+            this.txtGiaNhap.Enabled = false;
+            this.txtGiaNhap.Location = new System.Drawing.Point(419, 16);
+            this.txtGiaNhap.Name = "txtGiaNhap";
+            this.txtGiaNhap.Size = new System.Drawing.Size(193, 20);
+            this.txtGiaNhap.TabIndex = 1;
+            // 
+            // txtMaHang
+            // 
+            this.txtMaHang.Enabled = false;
+            this.txtMaHang.Location = new System.Drawing.Point(102, 16);
+            this.txtMaHang.Name = "txtMaHang";
+            this.txtMaHang.Size = new System.Drawing.Size(193, 20);
+            this.txtMaHang.TabIndex = 1;
             // 
             // label20
             // 
@@ -1278,10 +1301,10 @@
             // 
             this.splitContainer12.Panel2.Controls.Add(this.button24);
             this.splitContainer12.Panel2.Controls.Add(this.button22);
-            this.splitContainer12.Panel2.Controls.Add(this.button21);
+            this.splitContainer12.Panel2.Controls.Add(this.btnLuuHH);
             this.splitContainer12.Panel2.Controls.Add(this.button20);
             this.splitContainer12.Panel2.Controls.Add(this.button19);
-            this.splitContainer12.Panel2.Controls.Add(this.button18);
+            this.splitContainer12.Panel2.Controls.Add(this.btnThemHH);
             this.splitContainer12.Size = new System.Drawing.Size(1244, 391);
             this.splitContainer12.SplitterDistance = 330;
             this.splitContainer12.TabIndex = 0;
@@ -1321,18 +1344,19 @@
             this.button22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button22.UseVisualStyleBackColor = false;
             // 
-            // button21
+            // btnLuuHH
             // 
-            this.button21.BackColor = System.Drawing.Color.White;
-            this.button21.Image = ((System.Drawing.Image)(resources.GetObject("button21.Image")));
-            this.button21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button21.Location = new System.Drawing.Point(665, 10);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(75, 39);
-            this.button21.TabIndex = 0;
-            this.button21.Text = "Lưu";
-            this.button21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button21.UseVisualStyleBackColor = false;
+            this.btnLuuHH.BackColor = System.Drawing.Color.White;
+            this.btnLuuHH.Image = ((System.Drawing.Image)(resources.GetObject("btnLuuHH.Image")));
+            this.btnLuuHH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuuHH.Location = new System.Drawing.Point(665, 10);
+            this.btnLuuHH.Name = "btnLuuHH";
+            this.btnLuuHH.Size = new System.Drawing.Size(75, 39);
+            this.btnLuuHH.TabIndex = 0;
+            this.btnLuuHH.Text = "Lưu";
+            this.btnLuuHH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLuuHH.UseVisualStyleBackColor = false;
+            this.btnLuuHH.Click += new System.EventHandler(this.btnLuuHH_Click);
             // 
             // button20
             // 
@@ -1360,18 +1384,19 @@
             this.button19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button19.UseVisualStyleBackColor = false;
             // 
-            // button18
+            // btnThemHH
             // 
-            this.button18.BackColor = System.Drawing.Color.White;
-            this.button18.Image = ((System.Drawing.Image)(resources.GetObject("button18.Image")));
-            this.button18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button18.Location = new System.Drawing.Point(7, 10);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(75, 39);
-            this.button18.TabIndex = 0;
-            this.button18.Text = "Thêm";
-            this.button18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button18.UseVisualStyleBackColor = false;
+            this.btnThemHH.BackColor = System.Drawing.Color.White;
+            this.btnThemHH.Image = ((System.Drawing.Image)(resources.GetObject("btnThemHH.Image")));
+            this.btnThemHH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThemHH.Location = new System.Drawing.Point(7, 10);
+            this.btnThemHH.Name = "btnThemHH";
+            this.btnThemHH.Size = new System.Drawing.Size(75, 39);
+            this.btnThemHH.TabIndex = 0;
+            this.btnThemHH.Text = "Thêm";
+            this.btnThemHH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThemHH.UseVisualStyleBackColor = false;
+            this.btnThemHH.Click += new System.EventHandler(this.btnThemHH_Click);
             // 
             // tabPage2
             // 
@@ -1825,26 +1850,6 @@
             this.button23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button23.UseVisualStyleBackColor = false;
             // 
-            // btnBrowser
-            // 
-            this.btnBrowser.Location = new System.Drawing.Point(1013, 55);
-            this.btnBrowser.Name = "btnBrowser";
-            this.btnBrowser.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowser.TabIndex = 4;
-            this.btnBrowser.Text = "Browser";
-            this.btnBrowser.UseVisualStyleBackColor = true;
-            this.btnBrowser.Click += new System.EventHandler(this.btnBrowser_Click);
-            // 
-            // picHangHoa
-            // 
-            this.picHangHoa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picHangHoa.Location = new System.Drawing.Point(797, 55);
-            this.picHangHoa.Name = "picHangHoa";
-            this.picHangHoa.Size = new System.Drawing.Size(210, 97);
-            this.picHangHoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picHangHoa.TabIndex = 5;
-            this.picHangHoa.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1917,6 +1922,7 @@
             this.splitContainer11.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer11)).EndInit();
             this.splitContainer11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).EndInit();
             this.splitContainer12.Panel1.ResumeLayout(false);
             this.splitContainer12.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).EndInit();
@@ -1941,7 +1947,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2015,13 +2020,13 @@
         private System.Windows.Forms.SplitContainer splitContainer10;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.SplitContainer splitContainer11;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.ComboBox cobMaChatLieu;
+        private System.Windows.Forms.TextBox txtSoLuongHang;
+        private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.TextBox txtGiaBan;
+        private System.Windows.Forms.TextBox txtTenHang;
+        private System.Windows.Forms.TextBox txtGiaNhap;
+        private System.Windows.Forms.TextBox txtMaHang;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label19;
@@ -2034,10 +2039,10 @@
         private System.Windows.Forms.DataGridView dgvHangHoa;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button btnLuuHH;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button btnThemHH;
         private System.Windows.Forms.SplitContainer splitContainer13;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.SplitContainer splitContainer14;
@@ -2082,7 +2087,7 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox textBox34;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.TextBox txtTimHiemHangHoa;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox textBox31;

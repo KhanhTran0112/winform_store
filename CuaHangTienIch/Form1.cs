@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace CuaHangTienIch
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -26,10 +28,14 @@ namespace CuaHangTienIch
             var khachHang = from b in db.KhachHangs select new { ID = b.MaKhach, Name = b.TenKhach, Phone = b.SoDienThoai, Address = b.DiaChi };
             dgvKhachHang.DataSource = khachHang.ToList();
 
-            var chatLieu = from c in db.ChatLieux select new { ID = c.MaChatLieu, Name = c.TenChatLieu };
+            var chatLieu = from c in db.ChatLieux select new {c.MaChatLieu, c.TenChatLieu };
             dgvChatLieu.DataSource = chatLieu.ToList();
+            cobMaChatLieu.DataSource = chatLieu.ToList();
+            cobMaChatLieu.ValueMember = "MaChatLieu";
+            cobMaChatLieu.DisplayMember = "MaChatLieu";
 
             var hangHoa = from d in db.Hangs select new { ID = d.MaHang, Name = d.TenHang, ID_Material = d.MaChatLieu, Name_Material = d.ChatLieu.TenChatLieu, Amount = d.SoLuong, Price_Enter = d.DonGiaNhap, Price = d.DonGiaBan, Note = d.GhiChu };
+            
             dgvHangHoa.DataSource = hangHoa.ToList();
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -61,7 +67,7 @@ namespace CuaHangTienIch
             try
             {
                 OpenFileDialog dlg = new OpenFileDialog();
-                dlg.Filter = "JPG Files (*.jpg) | *.jpg | GIF Files (*.gif) | *.gif | All Files (*.*) | *.*";
+                dlg.Filter = "All Files (*.*) | *.*";
                 dlg.Title = "Select image of goods";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -73,6 +79,58 @@ namespace CuaHangTienIch
             {
 
             }
+        }
+
+        private void btnThemNV_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnThemHH_Click(object sender, EventArgs e)
+        {
+            txtMaHang.Enabled = true;
+            txtTenHang.Enabled = true;
+            cobMaChatLieu.Enabled = true;
+            txtSoLuongHang.Enabled = true;
+            txtGiaNhap.Enabled = true;
+            txtGiaBan.Enabled = true;
+            txtGhiChu.Enabled = true;
+            btnBrowser.Enabled = true;
+
+            txtMaHang.Text = "H02";
+            txtTenHang.Text = "Cốc nhựa";
+            txtSoLuongHang.Text = "20";
+            txtGiaNhap.Text = "2500";
+            txtGiaBan.Text = "3000";
+            txtGhiChu.Text = "";
+
+        }
+
+        private byte[] ConvertFillToByte(string sPath)
+        {
+            byte[] data = null;
+            FileInfo flinfo = new FileInfo(sPath);
+            long numByte = flinfo.Length;
+            FileStream fstream = new FileStream(sPath, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fstream);
+            data = br.ReadBytes((int)numByte);
+            return data;
+        }
+        private void btnLuuHH_Click(object sender, EventArgs e)
+        {
+            storeEntities db = new storeEntities();
+            Hang hang = new Hang();
+            hang.MaHang = txtMaHang.Text;
+            hang.TenHang = txtTenHang.Text;
+            hang.MaChatLieu = cobMaChatLieu.SelectedValue.ToString();
+            hang.SoLuong = Convert.ToInt32(txtSoLuongHang.Text);
+            hang.DonGiaBan = Convert.ToInt32(txtGiaBan.Text);
+            hang.DonGiaNhap = Convert.ToInt32(txtGiaNhap.Text);
+            hang.GhiChu = txtGhiChu.Text;
+            hang.Anh = ConvertFillToByte(picHangHoa.ImageLocation);
+            db.Hangs.Add(hang);
+            db.SaveChanges();
+            MessageBox.Show("Thêm hàng thành công!");
+            loadData();
         }
     }
 }
