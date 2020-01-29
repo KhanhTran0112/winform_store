@@ -55,11 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChatLieu.cs">
-      <DependentUpon>StoreModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ChiTietHoaDon.cs">
-      <DependentUpon>StoreModel.tt</DependentUpon>
+      <DependentUpon>storeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -68,36 +65,36 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Hang.cs">
-      <DependentUpon>StoreModel.tt</DependentUpon>
+      <DependentUpon>storeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="HoaDon.cs">
-      <DependentUpon>StoreModel.tt</DependentUpon>
+      <DependentUpon>storeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="KhachHang.cs">
-      <DependentUpon>StoreModel.tt</DependentUpon>
+      <DependentUpon>storeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="NhanVien.cs">
-      <DependentUpon>StoreModel.tt</DependentUpon>
+      <DependentUpon>storeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StoreModel.Context.cs">
+    <Compile Include="storeEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StoreModel.Context.tt</DependentUpon>
+      <DependentUpon>storeEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="StoreModel.cs">
+    <Compile Include="storeEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StoreModel.tt</DependentUpon>
+      <DependentUpon>storeEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="StoreModel.Designer.cs">
+    <Compile Include="storeEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StoreModel.edmx</DependentUpon>
+      <DependentUpon>storeEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>StoreModel.tt</DependentUpon>
+      <DependentUpon>storeEntities.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -121,31 +118,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EntityDeploy Include="StoreModel.edmx">
+    <EntityDeploy Include="storeEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StoreModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>storeEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="StoreModel.edmx.diagram">
-      <DependentUpon>StoreModel.edmx</DependentUpon>
+    <None Include="storeEntities.edmx.diagram">
+      <DependentUpon>storeEntities.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="StoreModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>StoreModel.Context.cs</LastGenOutput>
-      <DependentUpon>StoreModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="StoreModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StoreModel.edmx</DependentUpon>
-      <LastGenOutput>StoreModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="storeEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>storeEntities.edmx</DependentUpon>
+      <LastGenOutput>storeEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="storeEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>storeEntities.edmx</DependentUpon>
+      <LastGenOutput>storeEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

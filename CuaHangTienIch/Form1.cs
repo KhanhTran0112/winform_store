@@ -28,13 +28,7 @@ namespace CuaHangTienIch
             var khachHang = from b in db.KhachHangs select new { ID = b.MaKhach, Name = b.TenKhach, Phone = b.SoDienThoai, Address = b.DiaChi };
             dgvKhachHang.DataSource = khachHang.ToList();
 
-            var chatLieu = from c in db.ChatLieux select new {c.MaChatLieu, c.TenChatLieu };
-            dgvChatLieu.DataSource = chatLieu.ToList();
-            cobMaChatLieu.DataSource = chatLieu.ToList();
-            cobMaChatLieu.ValueMember = "MaChatLieu";
-            cobMaChatLieu.DisplayMember = "MaChatLieu";
-
-            var hangHoa = from d in db.Hangs select new { ID = d.MaHang, Name = d.TenHang, ID_Material = d.MaChatLieu, Name_Material = d.ChatLieu.TenChatLieu, Amount = d.SoLuong, Price_Enter = d.DonGiaNhap, Price = d.DonGiaBan, Note = d.GhiChu };
+            var hangHoa = from d in db.Hangs select new { ID = d.MaHang, Name = d.TenHang, Name_Material = d.TenChatLieu, Amount = d.SoLuong, Price_Enter = d.DonGiaNhap, Price = d.DonGiaBan, Note = d.GhiChu, anh = d.Anh };
             
             dgvHangHoa.DataSource = hangHoa.ToList();
         }
@@ -89,7 +83,7 @@ namespace CuaHangTienIch
         {
             txtMaHang.Enabled = true;
             txtTenHang.Enabled = true;
-            cobMaChatLieu.Enabled = true;
+            cobChatLieu.Enabled = true;
             txtSoLuongHang.Enabled = true;
             txtGiaNhap.Enabled = true;
             txtGiaBan.Enabled = true;
@@ -121,7 +115,7 @@ namespace CuaHangTienIch
             Hang hang = new Hang();
             hang.MaHang = txtMaHang.Text;
             hang.TenHang = txtTenHang.Text;
-            hang.MaChatLieu = cobMaChatLieu.SelectedValue.ToString();
+            hang.TenChatLieu = cobChatLieu.SelectedItem.ToString();
             hang.SoLuong = Convert.ToInt32(txtSoLuongHang.Text);
             hang.DonGiaBan = Convert.ToInt32(txtGiaBan.Text);
             hang.DonGiaNhap = Convert.ToInt32(txtGiaNhap.Text);
@@ -131,6 +125,26 @@ namespace CuaHangTienIch
             db.SaveChanges();
             MessageBox.Show("Thêm hàng thành công!");
             loadData();
+        }
+
+        private void dgvHangHoa_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index;
+            index = e.RowIndex;
+            txtMaHang.Text = dgvHangHoa.Rows[index].Cells[0].Value.ToString();
+            txtTenHang.Text = dgvHangHoa.Rows[index].Cells[1].Value.ToString();
+            cobChatLieu.SelectedItem = dgvHangHoa.Rows[index].Cells[2].Value.ToString();
+            txtSoLuongHang.Text = dgvHangHoa.Rows[index].Cells[3].Value.ToString();
+            txtGiaNhap.Text = dgvHangHoa.Rows[index].Cells[4].Value.ToString();
+            txtGiaBan.Text = dgvHangHoa.Rows[index].Cells[5].Value.ToString();
+            txtGhiChu.Text = dgvHangHoa.Rows[index].Cells[6].Value.ToString();
+
+
+            storeEntities db = new storeEntities();
+            var anh = from d in db.Hangs where d.MaHang == txtMaHang.Text select new { d.Anh };
+            byte[] img = (byte[])dgvHangHoa.Rows[index].Cells[7].Value;
+            MemoryStream ms = new MemoryStream(img);
+            picHangHoa.Image = Image.FromStream(ms);
         }
     }
 }

@@ -21,3 +21,17 @@ E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\bin\Debug\EntityFra
 E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\bin\Debug\EntityFramework.xml
 E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\bin\Debug\EntityFramework.SqlServer.xml
 E:\Thực tập chuyên nghành\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.csproj.CopyComplete
+D:\winform_store\CuaHangTienIch\bin\Debug\CuaHangTienIch.exe.config
+D:\winform_store\CuaHangTienIch\bin\Debug\CuaHangTienIch.exe
+D:\winform_store\CuaHangTienIch\bin\Debug\CuaHangTienIch.pdb
+D:\winform_store\CuaHangTienIch\bin\Debug\EntityFramework.dll
+D:\winform_store\CuaHangTienIch\bin\Debug\EntityFramework.SqlServer.dll
+D:\winform_store\CuaHangTienIch\bin\Debug\EntityFramework.xml
+D:\winform_store\CuaHangTienIch\bin\Debug\EntityFramework.SqlServer.xml
+D:\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.csprojAssemblyReference.cache
+D:\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.Form1.resources
+D:\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.Properties.Resources.resources
+D:\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.csproj.GenerateResource.cache
+D:\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.csproj.CopyComplete
+D:\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.exe
+D:\winform_store\CuaHangTienIch\obj\Debug\CuaHangTienIch.pdb

@@ -16,9 +16,9 @@
     <EntitySetMapping Name="Hangs">
       <EntityTypeMapping TypeName="storeModel.Hang">
         <MappingFragment StoreEntitySet="Hang">
-          <ScalarProperty Name="TenChatLieu" ColumnName="TenChatLieu" />
           <ScalarProperty Name="MaHang" ColumnName="MaHang" />
           <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+          <ScalarProperty Name="TenChatLieu" ColumnName="TenChatLieu" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="DonGiaNhap" ColumnName="DonGiaNhap" />
           <ScalarProperty Name="DonGiaBan" ColumnName="DonGiaBan" />

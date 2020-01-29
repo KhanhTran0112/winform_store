@@ -5,13 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="storeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ChatLieu">
-          <Key>
-            <PropertyRef Name="MaChatLieu" />
-          </Key>
-          <Property Name="MaChatLieu" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="TenChatLieu" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
             <PropertyRef Name="MaHoaDon" />
@@ -29,7 +22,7 @@
           </Key>
           <Property Name="MaHang" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TenHang" Type="nvarchar" MaxLength="50" />
-          <Property Name="MaChatLieu" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenChatLieu" Type="nvarchar" MaxLength="50" />
           <Property Name="SoLuong" Type="float" />
           <Property Name="DonGiaNhap" Type="float" />
           <Property Name="DonGiaBan" Type="float" />
@@ -104,20 +97,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Hang_ChatLieu">
-          <End Role="ChatLieu" Type="Self.ChatLieu" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Hang" Type="Self.Hang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ChatLieu">
-              <PropertyRef Name="MaChatLieu" />
-            </Principal>
-            <Dependent Role="Hang">
-              <PropertyRef Name="MaChatLieu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_HoaDon_KhachHang">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -147,7 +126,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="storeModelStoreContainer">
-          <EntitySet Name="ChatLieu" EntityType="Self.ChatLieu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hang" EntityType="Self.Hang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
@@ -161,10 +139,6 @@
           <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Self.FK_ChiTietHoaDon_HoaDon">
             <End Role="HoaDon" EntitySet="HoaDon" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Hang_ChatLieu" Association="Self.FK_Hang_ChatLieu">
-            <End Role="ChatLieu" EntitySet="ChatLieu" />
-            <End Role="Hang" EntitySet="Hang" />
           </AssociationSet>
           <AssociationSet Name="FK_HoaDon_KhachHang" Association="Self.FK_HoaDon_KhachHang">
             <End Role="KhachHang" EntitySet="KhachHang" />
@@ -180,14 +154,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="storeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ChatLieu">
-          <Key>
-            <PropertyRef Name="MaChatLieu" />
-          </Key>
-          <Property Name="MaChatLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TenChatLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Hangs" Relationship="Self.FK_Hang_ChatLieu" FromRole="ChatLieu" ToRole="Hang" />
-        </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
             <PropertyRef Name="MaHoaDon" />
@@ -207,13 +173,12 @@
           </Key>
           <Property Name="MaHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MaChatLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenChatLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SoLuong" Type="Double" />
           <Property Name="DonGiaNhap" Type="Double" />
           <Property Name="DonGiaBan" Type="Double" />
           <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ChatLieu" Relationship="Self.FK_Hang_ChatLieu" FromRole="Hang" ToRole="ChatLieu" />
           <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_Hang" FromRole="Hang" ToRole="ChiTietHoaDon" />
         </EntityType>
         <EntityType Name="HoaDon">
@@ -261,20 +226,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_Hang_ChatLieu">
-          <End Role="ChatLieu" Type="Self.ChatLieu" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Hang" Type="Self.Hang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ChatLieu">
-              <PropertyRef Name="MaChatLieu" />
-            </Principal>
-            <Dependent Role="Hang">
-              <PropertyRef Name="MaChatLieu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ChiTietHoaDon_Hang">
           <End Role="Hang" Type="Self.Hang" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -332,17 +283,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="storeEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ChatLieux" EntityType="Self.ChatLieu" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="Hangs" EntityType="Self.Hang" />
           <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
           <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
           <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK_Hang_ChatLieu" Association="Self.FK_Hang_ChatLieu">
-            <End Role="ChatLieu" EntitySet="ChatLieux" />
-            <End Role="Hang" EntitySet="Hangs" />
-          </AssociationSet>
           <AssociationSet Name="FK_ChiTietHoaDon_Hang" Association="Self.FK_ChiTietHoaDon_Hang">
             <End Role="Hang" EntitySet="Hangs" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
@@ -366,14 +312,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="storeModelStoreContainer" CdmEntityContainer="storeEntities">
-          <EntitySetMapping Name="ChatLieux">
-            <EntityTypeMapping TypeName="storeModel.ChatLieu">
-              <MappingFragment StoreEntitySet="ChatLieu">
-                <ScalarProperty Name="MaChatLieu" ColumnName="MaChatLieu" />
-                <ScalarProperty Name="TenChatLieu" ColumnName="TenChatLieu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ChiTietHoaDons">
             <EntityTypeMapping TypeName="storeModel.ChiTietHoaDon">
               <MappingFragment StoreEntitySet="ChiTietHoaDon">
@@ -391,7 +329,7 @@
               <MappingFragment StoreEntitySet="Hang">
                 <ScalarProperty Name="MaHang" ColumnName="MaHang" />
                 <ScalarProperty Name="TenHang" ColumnName="TenHang" />
-                <ScalarProperty Name="MaChatLieu" ColumnName="MaChatLieu" />
+                <ScalarProperty Name="TenChatLieu" ColumnName="TenChatLieu" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="DonGiaNhap" ColumnName="DonGiaNhap" />
                 <ScalarProperty Name="DonGiaBan" ColumnName="DonGiaBan" />

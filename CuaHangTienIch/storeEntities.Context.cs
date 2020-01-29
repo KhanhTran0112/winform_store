@@ -25,7 +25,6 @@ namespace CuaHangTienIch
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ChatLieu> ChatLieux { get; set; }
         public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DbSet<Hang> Hangs { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }

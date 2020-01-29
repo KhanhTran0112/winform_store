@@ -22,14 +22,13 @@ namespace CuaHangTienIch
     
         public string MaHang { get; set; }
         public string TenHang { get; set; }
-        public string MaChatLieu { get; set; }
+        public string TenChatLieu { get; set; }
         public Nullable<double> SoLuong { get; set; }
         public Nullable<double> DonGiaNhap { get; set; }
         public Nullable<double> DonGiaBan { get; set; }
         public byte[] Anh { get; set; }
         public string GhiChu { get; set; }
     
-        public virtual ChatLieu ChatLieu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
     }

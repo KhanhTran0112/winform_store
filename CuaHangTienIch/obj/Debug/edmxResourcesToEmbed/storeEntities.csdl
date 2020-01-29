@@ -19,14 +19,13 @@
     </Key>
     <Property Name="MaHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="TenHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MaChatLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenChatLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SoLuong" Type="Double" />
     <Property Name="DonGiaNhap" Type="Double" />
     <Property Name="DonGiaBan" Type="Double" />
     <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_ChiTietHoaDon_Hang" FromRole="Hang" ToRole="ChiTietHoaDon" />
-    <Property Name="TenChatLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="HoaDon">
     <Key>
