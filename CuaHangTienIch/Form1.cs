@@ -18,10 +18,23 @@ namespace CuaHangTienIch
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            loadData();
+        }
+        #region Key word
+        private String keyHH = "";
+        private String keyNV = "";
+        private String keyKH = "";
+        private String keyHD = "";
+        #endregion
+
+        #region Form Load
+        storeEntities db = new storeEntities();
+
         void loadData()
         {
-            storeEntities db = new storeEntities();
-
             var nhanVien = from a in db.NhanViens select new { ID = a.MaNhanVien, Name = a.TenNhanVien, Sex = a.GioiTinh, Address = a.DiaChi, Phone = a.SoDienThoai, Date = a.NgaySinh };
             dgvNhanVien.DataSource = nhanVien.ToList();
 
@@ -29,14 +42,12 @@ namespace CuaHangTienIch
             dgvKhachHang.DataSource = khachHang.ToList();
 
             var hangHoa = from d in db.Hangs select new { ID = d.MaHang, Name = d.TenHang, Name_Material = d.TenChatLieu, Amount = d.SoLuong, Price_Enter = d.DonGiaNhap, Price = d.DonGiaBan, Note = d.GhiChu, anh = d.Anh };
-            
+
             dgvHangHoa.DataSource = hangHoa.ToList();
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            loadData();
-        }
+        #endregion
 
+        #region Nhân Viên
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index;
@@ -49,12 +60,15 @@ namespace CuaHangTienIch
             DateTime time = Convert.ToDateTime(dgvNhanVien.Rows[index].Cells[5].Value.ToString());
             dtpNgaySinhNV.Value = time;
         }
+        
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Close();
         }
+        #endregion
 
+        #region Hàng hóa
         private void btnBrowser_Click(object sender, EventArgs e)
         {
             string img = "";
@@ -75,10 +89,6 @@ namespace CuaHangTienIch
             }
         }
 
-        private void btnThemNV_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btnThemHH_Click(object sender, EventArgs e)
         {
             txtMaHang.Enabled = true;
@@ -89,14 +99,7 @@ namespace CuaHangTienIch
             txtGiaBan.Enabled = true;
             txtGhiChu.Enabled = true;
             btnBrowser.Enabled = true;
-
-            txtMaHang.Text = "H02";
-            txtTenHang.Text = "Cốc nhựa";
-            txtSoLuongHang.Text = "20";
-            txtGiaNhap.Text = "2500";
-            txtGiaBan.Text = "3000";
-            txtGhiChu.Text = "";
-
+            keyHH = "add";
         }
 
         private byte[] ConvertFillToByte(string sPath)
@@ -111,20 +114,52 @@ namespace CuaHangTienIch
         }
         private void btnLuuHH_Click(object sender, EventArgs e)
         {
-            storeEntities db = new storeEntities();
-            Hang hang = new Hang();
-            hang.MaHang = txtMaHang.Text;
-            hang.TenHang = txtTenHang.Text;
-            hang.TenChatLieu = cobChatLieu.SelectedItem.ToString();
-            hang.SoLuong = Convert.ToInt32(txtSoLuongHang.Text);
-            hang.DonGiaBan = Convert.ToInt32(txtGiaBan.Text);
-            hang.DonGiaNhap = Convert.ToInt32(txtGiaNhap.Text);
-            hang.GhiChu = txtGhiChu.Text;
-            hang.Anh = ConvertFillToByte(picHangHoa.ImageLocation);
-            db.Hangs.Add(hang);
-            db.SaveChanges();
-            MessageBox.Show("Thêm hàng thành công!");
-            loadData();
+            if (keyHH == "add")
+            {
+                Hang hang = new Hang();
+                hang.MaHang = txtMaHang.Text;
+                hang.TenHang = txtTenHang.Text;
+                hang.TenChatLieu = cobChatLieu.SelectedItem.ToString();
+                hang.SoLuong = Convert.ToInt32(txtSoLuongHang.Text);
+                hang.DonGiaBan = Convert.ToInt32(txtGiaBan.Text);
+                hang.DonGiaNhap = Convert.ToInt32(txtGiaNhap.Text);
+                hang.GhiChu = txtGhiChu.Text;
+                hang.Anh = ConvertFillToByte(picHangHoa.ImageLocation);
+                db.Hangs.Add(hang);
+                db.SaveChanges();
+                MessageBox.Show("Thêm hàng thành công!");
+                loadData();
+
+                txtMaHang.Enabled = true;
+                txtTenHang.Enabled = true;
+                cobChatLieu.Enabled = true;
+                txtSoLuongHang.Enabled = true;
+                txtGiaNhap.Enabled = true;
+                txtGiaBan.Enabled = true;
+                txtGhiChu.Enabled = true;
+                btnBrowser.Enabled = true;
+            }
+            if(keyHH == "edit")
+            {
+                String id = txtMaHang.Text;
+                Hang hang = db.Hangs.Find(id);
+                if (hang != null)
+                {
+                    hang.TenHang = txtTenHang.Text;
+                    hang.TenChatLieu = cobChatLieu.SelectedItem.ToString();
+                    hang.SoLuong = Convert.ToInt32(txtSoLuongHang.Text);
+                    hang.DonGiaBan = Convert.ToInt32(txtGiaBan.Text);
+                    hang.DonGiaNhap = Convert.ToInt32(txtGiaNhap.Text);
+                    hang.GhiChu = txtGhiChu.Text;
+                    hang.Anh = ConvertFillToByte(picHangHoa.ImageLocation);
+                    db.SaveChanges();
+                    loadData();
+                }
+                else
+                {
+                    MessageBox.Show("Không ton tai hang can chinh sua");
+                }
+            }
         }
 
         private void dgvHangHoa_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -146,5 +181,42 @@ namespace CuaHangTienIch
             MemoryStream ms = new MemoryStream(img);
             picHangHoa.Image = Image.FromStream(ms);
         }
+
+        private void btnSuaHH_Click(object sender, EventArgs e)
+        {
+            txtMaHang.Enabled = false;
+            txtTenHang.Enabled = true;
+            cobChatLieu.Enabled = true;
+            txtSoLuongHang.Enabled = true;
+            txtGiaNhap.Enabled = true;
+            txtGiaBan.Enabled = true;
+            txtGhiChu.Enabled = true;
+            btnBrowser.Enabled = true;
+            keyHH = "edit";
+        }
+
+        private void btnXoaHH_Click(object sender, EventArgs e)
+        {
+            storeEntities db = new storeEntities();
+            Hang hang = db.Hangs.Find(txtMaHang.Text);
+            db.Hangs.Remove(hang);
+            db.SaveChanges();
+            MessageBox.Show("Xóa thành công");
+            loadData();
+        }
+
+        private void txtTimHiemHangHoa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            String search = txtTimHiemHangHoa.Text;
+            var hangHoa = from d in db.Hangs where d.TenHang.ToUpper().Contains(search.ToUpper()) select new { ID = d.MaHang, Name = d.TenHang, Name_Material = d.TenChatLieu, Amount = d.SoLuong, Price_Enter = d.DonGiaNhap, Price = d.DonGiaBan, Note = d.GhiChu, anh = d.Anh };
+
+            dgvHangHoa.DataSource = hangHoa.ToList();
+        }
+
+        private void btnHienThiHH_Click(object sender, EventArgs e)
+        {
+            loadData();
+        }
+        #endregion
     }
 }
