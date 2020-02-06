@@ -38,7 +38,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.label43 = new System.Windows.Forms.Label();
             this.dtpNgaySinhNV = new System.Windows.Forms.DateTimePicker();
-            this.cbGioiTinh = new System.Windows.Forms.ComboBox();
+            this.cboGioiTinh = new System.Windows.Forms.ComboBox();
             this.txtSdtNV = new System.Windows.Forms.TextBox();
             this.txtTimKiemNV = new System.Windows.Forms.TextBox();
             this.txtDiaChiNV = new System.Windows.Forms.TextBox();
@@ -61,11 +61,11 @@
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.label8 = new System.Windows.Forms.Label();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox33 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtDiaChiKH = new System.Windows.Forms.TextBox();
+            this.txtTenKH = new System.Windows.Forms.TextBox();
+            this.txtTimKiemKH = new System.Windows.Forms.TextBox();
+            this.txtSDTKH = new System.Windows.Forms.TextBox();
+            this.txtMaKH = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
@@ -303,7 +303,7 @@
             // 
             this.splitContainer2.Panel1.Controls.Add(this.label43);
             this.splitContainer2.Panel1.Controls.Add(this.dtpNgaySinhNV);
-            this.splitContainer2.Panel1.Controls.Add(this.cbGioiTinh);
+            this.splitContainer2.Panel1.Controls.Add(this.cboGioiTinh);
             this.splitContainer2.Panel1.Controls.Add(this.txtSdtNV);
             this.splitContainer2.Panel1.Controls.Add(this.txtTimKiemNV);
             this.splitContainer2.Panel1.Controls.Add(this.txtDiaChiNV);
@@ -341,16 +341,16 @@
             this.dtpNgaySinhNV.Size = new System.Drawing.Size(273, 20);
             this.dtpNgaySinhNV.TabIndex = 3;
             // 
-            // cbGioiTinh
+            // cboGioiTinh
             // 
-            this.cbGioiTinh.FormattingEnabled = true;
-            this.cbGioiTinh.Items.AddRange(new object[] {
+            this.cboGioiTinh.FormattingEnabled = true;
+            this.cboGioiTinh.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.cbGioiTinh.Location = new System.Drawing.Point(140, 94);
-            this.cbGioiTinh.Name = "cbGioiTinh";
-            this.cbGioiTinh.Size = new System.Drawing.Size(110, 21);
-            this.cbGioiTinh.TabIndex = 2;
+            this.cboGioiTinh.Location = new System.Drawing.Point(140, 94);
+            this.cboGioiTinh.Name = "cboGioiTinh";
+            this.cboGioiTinh.Size = new System.Drawing.Size(110, 21);
+            this.cboGioiTinh.TabIndex = 2;
             // 
             // txtSdtNV
             // 
@@ -365,6 +365,7 @@
             this.txtTimKiemNV.Name = "txtTimKiemNV";
             this.txtTimKiemNV.Size = new System.Drawing.Size(273, 20);
             this.txtTimKiemNV.TabIndex = 1;
+            this.txtTimKiemNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimKiemNV_KeyPress);
             // 
             // txtDiaChiNV
             // 
@@ -501,6 +502,7 @@
             this.btnLuuNV.Text = "Lưu";
             this.btnLuuNV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuuNV.UseVisualStyleBackColor = false;
+            this.btnLuuNV.Click += new System.EventHandler(this.btnLuuNV_Click);
             // 
             // btnXoaNV
             // 
@@ -515,6 +517,7 @@
             this.btnXoaNV.Text = "Xoá";
             this.btnXoaNV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoaNV.UseVisualStyleBackColor = false;
+            this.btnXoaNV.Click += new System.EventHandler(this.btnXoaNV_Click);
             // 
             // btnSuaNV
             // 
@@ -528,6 +531,7 @@
             this.btnSuaNV.Text = "Sửa";
             this.btnSuaNV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSuaNV.UseVisualStyleBackColor = false;
+            this.btnSuaNV.Click += new System.EventHandler(this.btnSuaNV_Click);
             // 
             // btnThemNV
             // 
@@ -541,6 +545,7 @@
             this.btnThemNV.Text = "Thêm";
             this.btnThemNV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThemNV.UseVisualStyleBackColor = false;
+            this.btnThemNV.Click += new System.EventHandler(this.btnThemNV_Click);
             // 
             // tabPage6
             // 
@@ -590,11 +595,11 @@
             // 
             // splitContainer5.Panel1
             // 
-            this.splitContainer5.Panel1.Controls.Add(this.textBox8);
-            this.splitContainer5.Panel1.Controls.Add(this.textBox6);
-            this.splitContainer5.Panel1.Controls.Add(this.textBox33);
-            this.splitContainer5.Panel1.Controls.Add(this.textBox7);
-            this.splitContainer5.Panel1.Controls.Add(this.textBox5);
+            this.splitContainer5.Panel1.Controls.Add(this.txtDiaChiKH);
+            this.splitContainer5.Panel1.Controls.Add(this.txtTenKH);
+            this.splitContainer5.Panel1.Controls.Add(this.txtTimKiemKH);
+            this.splitContainer5.Panel1.Controls.Add(this.txtSDTKH);
+            this.splitContainer5.Panel1.Controls.Add(this.txtMaKH);
             this.splitContainer5.Panel1.Controls.Add(this.label12);
             this.splitContainer5.Panel1.Controls.Add(this.label10);
             this.splitContainer5.Panel1.Controls.Add(this.label44);
@@ -608,41 +613,42 @@
             this.splitContainer5.SplitterDistance = 103;
             this.splitContainer5.TabIndex = 0;
             // 
-            // textBox8
+            // txtDiaChiKH
             // 
-            this.textBox8.Location = new System.Drawing.Point(557, 60);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(227, 20);
-            this.textBox8.TabIndex = 1;
+            this.txtDiaChiKH.Location = new System.Drawing.Point(557, 60);
+            this.txtDiaChiKH.Name = "txtDiaChiKH";
+            this.txtDiaChiKH.Size = new System.Drawing.Size(227, 20);
+            this.txtDiaChiKH.TabIndex = 1;
             // 
-            // textBox6
+            // txtTenKH
             // 
-            this.textBox6.Location = new System.Drawing.Point(140, 60);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(227, 20);
-            this.textBox6.TabIndex = 1;
+            this.txtTenKH.Location = new System.Drawing.Point(140, 60);
+            this.txtTenKH.Name = "txtTenKH";
+            this.txtTenKH.Size = new System.Drawing.Size(227, 20);
+            this.txtTenKH.TabIndex = 1;
             // 
-            // textBox33
+            // txtTimKiemKH
             // 
-            this.textBox33.Location = new System.Drawing.Point(926, 17);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(227, 20);
-            this.textBox33.TabIndex = 1;
+            this.txtTimKiemKH.Location = new System.Drawing.Point(926, 17);
+            this.txtTimKiemKH.Name = "txtTimKiemKH";
+            this.txtTimKiemKH.Size = new System.Drawing.Size(227, 20);
+            this.txtTimKiemKH.TabIndex = 1;
+            this.txtTimKiemKH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimKiemKH_KeyPress);
             // 
-            // textBox7
+            // txtSDTKH
             // 
-            this.textBox7.Location = new System.Drawing.Point(557, 17);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(227, 20);
-            this.textBox7.TabIndex = 1;
+            this.txtSDTKH.Location = new System.Drawing.Point(557, 17);
+            this.txtSDTKH.Name = "txtSDTKH";
+            this.txtSDTKH.Size = new System.Drawing.Size(227, 20);
+            this.txtSDTKH.TabIndex = 1;
             // 
-            // textBox5
+            // txtMaKH
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(140, 17);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(227, 20);
-            this.textBox5.TabIndex = 1;
+            this.txtMaKH.Enabled = false;
+            this.txtMaKH.Location = new System.Drawing.Point(140, 17);
+            this.txtMaKH.Name = "txtMaKH";
+            this.txtMaKH.Size = new System.Drawing.Size(227, 20);
+            this.txtMaKH.TabIndex = 1;
             // 
             // label12
             // 
@@ -721,6 +727,7 @@
             this.dgvKhachHang.Name = "dgvKhachHang";
             this.dgvKhachHang.Size = new System.Drawing.Size(1244, 396);
             this.dgvKhachHang.TabIndex = 0;
+            this.dgvKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellClick);
             // 
             // button12
             // 
@@ -743,6 +750,7 @@
             this.btnLuuKH.Text = "Lưu";
             this.btnLuuKH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLuuKH.UseVisualStyleBackColor = false;
+            this.btnLuuKH.Click += new System.EventHandler(this.btnLuuKH_Click);
             // 
             // button9
             // 
@@ -765,6 +773,7 @@
             this.btnSuaKH.Text = "Sửa";
             this.btnSuaKH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSuaKH.UseVisualStyleBackColor = false;
+            this.btnSuaKH.Click += new System.EventHandler(this.btnSuaKH_Click);
             // 
             // btnXoaKH
             // 
@@ -778,6 +787,7 @@
             this.btnXoaKH.Text = "Xoá";
             this.btnXoaKH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoaKH.UseVisualStyleBackColor = false;
+            this.btnXoaKH.Click += new System.EventHandler(this.btnXoaKH_Click);
             // 
             // button7
             // 
@@ -804,6 +814,7 @@
             this.btnThemKH.Text = "Thêm";
             this.btnThemKH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThemKH.UseVisualStyleBackColor = false;
+            this.btnThemKH.Click += new System.EventHandler(this.btnThemKH_Click);
             // 
             // tabPage8
             // 
@@ -1761,7 +1772,7 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.DateTimePicker dtpNgaySinhNV;
-        private System.Windows.Forms.ComboBox cbGioiTinh;
+        private System.Windows.Forms.ComboBox cboGioiTinh;
         private System.Windows.Forms.TextBox txtSdtNV;
         private System.Windows.Forms.TextBox txtTimKiemNV;
         private System.Windows.Forms.TextBox txtDiaChiNV;
@@ -1784,11 +1795,11 @@
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.SplitContainer splitContainer5;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox33;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtDiaChiKH;
+        private System.Windows.Forms.TextBox txtTenKH;
+        private System.Windows.Forms.TextBox txtTimKiemKH;
+        private System.Windows.Forms.TextBox txtSDTKH;
+        private System.Windows.Forms.TextBox txtMaKH;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label44;

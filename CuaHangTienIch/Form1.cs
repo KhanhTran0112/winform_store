@@ -54,7 +54,7 @@ namespace CuaHangTienIch
             index = e.RowIndex;
             txtMaNV.Text = dgvNhanVien.Rows[index].Cells[0].Value.ToString();
             txtTenNV.Text = dgvNhanVien.Rows[index].Cells[1].Value.ToString();
-            cbGioiTinh.SelectedItem = dgvNhanVien.Rows[index].Cells[2].Value.ToString();
+            cboGioiTinh.SelectedItem = dgvNhanVien.Rows[index].Cells[2].Value.ToString();
             txtDiaChiNV.Text = dgvNhanVien.Rows[index].Cells[3].Value.ToString();
             txtSdtNV.Text = dgvNhanVien.Rows[index].Cells[4].Value.ToString();
             DateTime time = Convert.ToDateTime(dgvNhanVien.Rows[index].Cells[5].Value.ToString());
@@ -65,6 +65,77 @@ namespace CuaHangTienIch
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void btnThemNV_Click(object sender, EventArgs e)
+        {
+            txtMaNV.Enabled = true;
+            txtTenNV.Enabled = true;
+            txtDiaChiNV.Enabled = true;
+            txtSdtNV.Enabled = true;
+            cboGioiTinh.Enabled = true;
+            dtpNgaySinhNV.Enabled = true;
+            keyNV = "add";
+        }
+        private void btnLuuNV_Click(object sender, EventArgs e)
+        {
+            if(keyNV == "add")
+            {
+                NhanVien nv = new NhanVien();
+                nv.MaNhanVien = txtMaNV.Text;
+                nv.TenNhanVien = txtTenNV.Text;
+                nv.GioiTinh = cboGioiTinh.SelectedItem.ToString();
+                nv.DiaChi = txtDiaChiNV.Text;
+                nv.SoDienThoai = txtSdtNV.Text;
+                nv.NgaySinh = dtpNgaySinhNV.Value;
+                db.NhanViens.Add(nv);
+                db.SaveChanges();
+                MessageBox.Show("Thêm thành công!");
+                loadData();
+            }
+            if(keyNV == "edit")
+            {
+                String id = txtMaNV.Text;
+                NhanVien nv = db.NhanViens.Find(id);
+                if(nv != null)
+                {
+                    nv.TenNhanVien = txtTenNV.Text;
+                    nv.GioiTinh = cboGioiTinh.SelectedItem.ToString();
+                    nv.DiaChi = txtDiaChiNV.Text;
+                    nv.SoDienThoai = txtSdtNV.Text;
+                    nv.NgaySinh = dtpNgaySinhNV.Value;
+                    db.SaveChanges();
+                    MessageBox.Show("Chỉnh sửa thành công");
+                    loadData();
+                }
+            }
+        }
+        private void btnSuaNV_Click(object sender, EventArgs e)
+        {
+            txtMaNV.Enabled = false;
+            txtTenNV.Enabled = true;
+            txtDiaChiNV.Enabled = true;
+            txtSdtNV.Enabled = true;
+            cboGioiTinh.Enabled = true;
+            dtpNgaySinhNV.Enabled = true;
+            keyNV = "edit";
+        }
+        private void btnXoaNV_Click(object sender, EventArgs e)
+        {
+            NhanVien nv = db.NhanViens.Find(txtMaNV.Text);
+            db.NhanViens.Remove(nv);
+            db.SaveChanges();
+            MessageBox.Show("Xóa thành công!");
+            loadData();
+        }
+        private void txtTimKiemNV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            String search = txtTimKiemNV.Text;
+            var nv = from a in db.NhanViens where a.TenNhanVien.ToUpper().Contains(search.ToUpper()) select new { ID = a.MaNhanVien, Name = a.TenNhanVien, Sex = a.GioiTinh, Address = a.DiaChi, Phone = a.SoDienThoai, Date = a.NgaySinh };
+            dgvNhanVien.DataSource = nv.ToList();
+            if(txtTimKiemNV.Text == "")
+            {
+                loadData();
+            }
         }
         #endregion
 
@@ -197,7 +268,6 @@ namespace CuaHangTienIch
 
         private void btnXoaHH_Click(object sender, EventArgs e)
         {
-            storeEntities db = new storeEntities();
             Hang hang = db.Hangs.Find(txtMaHang.Text);
             db.Hangs.Remove(hang);
             db.SaveChanges();
@@ -211,12 +281,95 @@ namespace CuaHangTienIch
             var hangHoa = from d in db.Hangs where d.TenHang.ToUpper().Contains(search.ToUpper()) select new { ID = d.MaHang, Name = d.TenHang, Name_Material = d.TenChatLieu, Amount = d.SoLuong, Price_Enter = d.DonGiaNhap, Price = d.DonGiaBan, Note = d.GhiChu, anh = d.Anh };
 
             dgvHangHoa.DataSource = hangHoa.ToList();
+            if (txtTimHiemHangHoa.Text == "")
+            {
+                loadData();
+            }
         }
 
         private void btnHienThiHH_Click(object sender, EventArgs e)
         {
             loadData();
         }
+
+
         #endregion
+
+        #region Khách Hàng
+        private void btnThemKH_Click(object sender, EventArgs e)
+        {
+            txtMaKH.Enabled = true;
+            txtTenKH.Enabled = true;
+            txtSDTKH.Enabled = true;
+            txtDiaChiKH.Enabled = true;
+            keyKH = "add";
+        }
+        private void btnSuaKH_Click(object sender, EventArgs e)
+        {
+            txtMaKH.Enabled = false;
+            txtTenKH.Enabled = true;
+            txtSDTKH.Enabled = true;
+            txtDiaChiKH.Enabled = true;
+            keyKH = "edit";
+        }
+
+        private void btnLuuKH_Click(object sender, EventArgs e)
+        {
+            if (keyKH == "add")
+            {
+                KhachHang kh = new KhachHang();
+                kh.MaKhach = txtMaKH.Text;
+                kh.TenKhach = txtTenKH.Text;
+                kh.SoDienThoai = txtSDTKH.Text;
+                kh.DiaChi = txtDiaChiKH.Text;
+                db.KhachHangs.Add(kh);
+                db.SaveChanges();
+                MessageBox.Show("Thêm thành công!");
+                loadData();
+            }
+            if (keyKH == "edit")
+            {
+                String id = txtMaKH.Text;
+                KhachHang kh = db.KhachHangs.Find(id);
+                kh.TenKhach = txtTenKH.Text;
+                kh.SoDienThoai = txtSDTKH.Text;
+                kh.DiaChi = txtDiaChiKH.Text;
+                db.SaveChanges();
+                MessageBox.Show("Chỉnh sửa thành công!");
+                loadData();
+            }
+        }
+
+        private void btnXoaKH_Click(object sender, EventArgs e)
+        {
+            String id = txtMaKH.Text;
+            KhachHang kh = db.KhachHangs.Find(id);
+            db.KhachHangs.Remove(kh);
+            db.SaveChanges();
+            loadData();
+        }
+        private void dgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index;
+            index = e.RowIndex;
+            txtMaKH.Text = dgvKhachHang.Rows[index].Cells[0].Value.ToString();
+            txtTenKH.Text = dgvKhachHang.Rows[index].Cells[1].Value.ToString();
+            txtSDTKH.Text = dgvKhachHang.Rows[index].Cells[2].Value.ToString();
+            txtDiaChiKH.Text = dgvKhachHang.Rows[index].Cells[3].Value.ToString();
+        }
+        private void txtTimKiemKH_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            String search = txtTimKiemKH.Text;
+            var khachHang = from b in db.KhachHangs where b.TenKhach.ToUpper().Contains(search.ToUpper()) select new { ID = b.MaKhach, Name = b.TenKhach, Phone = b.SoDienThoai, Address = b.DiaChi };
+            dgvKhachHang.DataSource = khachHang.ToList();
+
+            if (txtTimKiemKH.Text == "")
+            {
+                loadData();
+            }
+        }
+        #endregion
+
+
     }
 }
