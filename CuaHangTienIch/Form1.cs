@@ -42,8 +42,10 @@ namespace CuaHangTienIch
             dgvKhachHang.DataSource = khachHang.ToList();
 
             var hangHoa = from d in db.Hangs select new { ID = d.MaHang, Name = d.TenHang, Name_Material = d.TenChatLieu, Amount = d.SoLuong, Price_Enter = d.DonGiaNhap, Price = d.DonGiaBan, Note = d.GhiChu, anh = d.Anh };
-
             dgvHangHoa.DataSource = hangHoa.ToList();
+
+            var hoadon = from e in db.HoaDons select new { ID = e.MaNhanVien, MaNhanVien = e.MaNhanVien, NgayBan = e.NgayBan, MaKhach = e.MaKhach, TongTien = e.TongTien };
+            dgvHoaDon.DataSource = hoadon.ToList();
         }
         #endregion
 
@@ -346,6 +348,7 @@ namespace CuaHangTienIch
             KhachHang kh = db.KhachHangs.Find(id);
             db.KhachHangs.Remove(kh);
             db.SaveChanges();
+            MessageBox.Show("Xóa thành công!");
             loadData();
         }
         private void dgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -368,8 +371,27 @@ namespace CuaHangTienIch
                 loadData();
             }
         }
+
         #endregion
 
+        private void dgvHoaDon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index;
+            index = e.RowIndex;
+            txtMaHoaDon.Text = dgvHoaDon.Rows[index].Cells[0].Value.ToString();
+            txtMaNhanVien.Text = dgvHoaDon.Rows[index].Cells[1].Value.ToString();
+            DateTime time = Convert.ToDateTime(dgvHoaDon.Rows[index].Cells[2].Value.ToString());
+            dtpNgayBan.Value = time;
+            txtMaKhachHang.Text = dgvHoaDon.Rows[index].Cells[3].Value.ToString();
+            txtTongTien.Text = dgvHoaDon.Rows[index].Cells[4].Value.ToString();
 
+            NhanVien nv = db.NhanViens.Find(txtMaNhanVien.Text);
+            txtTenNhanVien.Text = nv.TenNhanVien;
+
+            KhachHang kh = db.KhachHangs.Find(txtMaKhachHang.Text);
+            txtTenKhachHang.Text = kh.TenKhach;
+            txtSDTKhachHang.Text = kh.SoDienThoai;
+            txtDiaChiKhachHang.Text = kh.DiaChi;
+        }
     }
 }
