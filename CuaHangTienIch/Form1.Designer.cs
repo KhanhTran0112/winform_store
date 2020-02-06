@@ -136,17 +136,12 @@
             this.label27 = new System.Windows.Forms.Label();
             this.splitContainer15 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label41 = new System.Windows.Forms.Label();
             this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox28 = new System.Windows.Forms.TextBox();
             this.textBox26 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox27 = new System.Windows.Forms.TextBox();
             this.textBox25 = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.txtTongTien = new System.Windows.Forms.TextBox();
@@ -1439,17 +1434,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label41);
             this.groupBox2.Controls.Add(this.textBox30);
-            this.groupBox2.Controls.Add(this.textBox28);
             this.groupBox2.Controls.Add(this.textBox26);
-            this.groupBox2.Controls.Add(this.textBox29);
             this.groupBox2.Controls.Add(this.textBox27);
             this.groupBox2.Controls.Add(this.textBox25);
             this.groupBox2.Controls.Add(this.label40);
-            this.groupBox2.Controls.Add(this.label38);
             this.groupBox2.Controls.Add(this.label36);
-            this.groupBox2.Controls.Add(this.label39);
             this.groupBox2.Controls.Add(this.label37);
             this.groupBox2.Controls.Add(this.label35);
             this.groupBox2.Controls.Add(this.txtTongTien);
@@ -1463,28 +1453,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin các mặt hàng";
             // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(712, 62);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(15, 13);
-            this.label41.TabIndex = 5;
-            this.label41.Text = "%";
-            // 
             // textBox30
             // 
-            this.textBox30.Location = new System.Drawing.Point(899, 59);
+            this.textBox30.Location = new System.Drawing.Point(514, 59);
             this.textBox30.Name = "textBox30";
             this.textBox30.Size = new System.Drawing.Size(213, 20);
             this.textBox30.TabIndex = 4;
-            // 
-            // textBox28
-            // 
-            this.textBox28.Location = new System.Drawing.Point(514, 59);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(190, 20);
-            this.textBox28.TabIndex = 4;
             // 
             // textBox26
             // 
@@ -1492,13 +1466,6 @@
             this.textBox26.Name = "textBox26";
             this.textBox26.Size = new System.Drawing.Size(213, 20);
             this.textBox26.TabIndex = 4;
-            // 
-            // textBox29
-            // 
-            this.textBox29.Location = new System.Drawing.Point(899, 26);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(213, 20);
-            this.textBox29.TabIndex = 4;
             // 
             // textBox27
             // 
@@ -1517,20 +1484,11 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(783, 62);
+            this.label40.Location = new System.Drawing.Point(407, 62);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(58, 13);
             this.label40.TabIndex = 3;
             this.label40.Text = "Thành tiền";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(407, 62);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(48, 13);
-            this.label38.TabIndex = 3;
-            this.label38.Text = "Giảm giá";
             // 
             // label36
             // 
@@ -1540,15 +1498,6 @@
             this.label36.Size = new System.Drawing.Size(49, 13);
             this.label36.TabIndex = 3;
             this.label36.Text = "Số lượng";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(783, 29);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(44, 13);
-            this.label39.TabIndex = 3;
-            this.label39.Text = "Đơn giá";
             // 
             // label37
             // 
@@ -1745,17 +1694,12 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.SplitContainer splitContainer15;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label41;
         private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.TextBox textBox28;
         private System.Windows.Forms.TextBox textBox26;
-        private System.Windows.Forms.TextBox textBox29;
         private System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.TextBox textBox25;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TextBox txtTongTien;
